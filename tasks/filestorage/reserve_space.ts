@@ -2,7 +2,7 @@ import { task } from "hardhat/config";
 import FileStorageAbi from '../fs.abi.json';
 import { BigNumber } from 'ethers';
 
-task("reserve", "Reserve Space in File Storage")
+task("fs-reserve", "Reserve Space in File Storage")
     .addParam("to", "The Address Receving the Space")
     .addParam("amount", "The amount of megabytes of space to reserve them")
     .setAction(async(taskArgs: any, { ethers, userConfig }) => {

@@ -1,13 +1,28 @@
-# Sample Hardhat Project
+# Administrative Scripts for SKALE
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+## Overview
 
-Try running some of the following tasks:
+This repo was created to address a limitation of utilizing multi-signature wallets in consistent scripting.
+Due to the permissive nature of SKALE Chains, EOAs can be temporarily granted with rights in order to fire off complex 
+scripts and then revoked afterwords.
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.ts
+## Available Scripts
+
+### FileStorage
+
+```bash
+  npx hardhat fs-reserve --to <eth_address> --amount <num_megabytes> --network <network>
+```
+
+### Config Controller
+
+Bulk Role Assignment/Revoke
+
+```bash
+  npx hardhat cc-bulk-role-add --userList <key> --network <network>
+```
+
+Bulk Role Removal
+```bash
+   npx hardhat cc-bulk-role-remove --userList <key>  --network <network>
 ```
