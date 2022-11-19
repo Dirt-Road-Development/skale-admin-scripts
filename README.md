@@ -16,13 +16,15 @@ scripts and then revoked afterwords.
 
 ### Config Controller
 
+** Note for both of this, manually add addresses to the **user list** variable found (here)[./tasks/config_controller/bulk_role.ts]
+
 Bulk Role Assignment/Revoke
 
 ```bash
-  npx hardhat cc-bulk-role-add --userList <key> --network <network>
+  npx hardhat add-deployer-role --network <network>
 ```
 
 Bulk Role Removal
 ```bash
-   npx hardhat cc-bulk-role-remove --userList <key>  --network <network>
+   npx hardhat revoke-deployer-role --network <network>
 ```
