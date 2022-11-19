@@ -1,19 +1,25 @@
 import { task } from "hardhat/config";
 import ConfigControllerAbi from '../../configController.abi.json';
 import Addresses from '../../addresses.json';
-import UserList from '../../user_list.json';
 
-import { BigNumber } from 'ethers';
+task('gas', "Give gas")
+    .setAction(async(taskArgs: any, { ethers }) => {
+        const users: string[] = [];
 
-task("cc-bulk-role-add", "Add All Users to the following role on CC")
-    .addParam("userList", "Path to the file with an array of addresses")
-    .setAction(async(taskArgs: any, { ethers, userConfig }) => {
+        const [ signer ] = await ethers.getSigners();
+
+        for (const user of users) {
+            await signer.sendTransaction({
+                to: user,
+                value: ethers.utils.parseEther("0.005")
+            });
+        }
+    })
+
+task("add-deployer-role", "Add All Users to the following role on CC")
+    .setAction(async(taskArgs: any, { ethers }) => {
     
-        const keys: string[] = Object.keys(UserList);
-
-        if (!keys.includes(taskArgs.userList)) throw new Error("Invalid User List");
-        
-        const addresses: string[] = (UserList as any)[taskArgs.userList];
+        const addresses: string[] = [];
 
         const [ signer ] = await ethers.getSigners();
        
@@ -38,15 +44,10 @@ task("cc-bulk-role-add", "Add All Users to the following role on CC")
         }
     })
 
-task("cc-bulk-role-revoke", "Remove All Users to the following role on CC")
-    .addParam("userList", "Path to the file with an array of addresses")
+task("revoke-deployer-role", "Remove All Users to the following role on CC")
     .setAction(async(taskArgs: any, { ethers, userConfig }) => {
     
-        const keys: string[] = Object.keys(UserList);
-
-        if (!keys.includes(taskArgs.userList)) throw new Error("Invalid User List");
-        
-        const addresses: string[] = (UserList as any)[taskArgs.userList];
+        const addresses: string[] = [];
 
         const [ signer ] = await ethers.getSigners();
        

@@ -1,13 +1,11 @@
 import { task } from "hardhat/config";
-import FileStorageAbi from '../fs.abi.json';
+import FileStorageAbi from '../../fs.abi.json';
 import { BigNumber } from 'ethers';
 
 task("fs-reserve", "Reserve Space in File Storage")
     .addParam("to", "The Address Receving the Space")
     .addParam("amount", "The amount of megabytes of space to reserve them")
     .setAction(async(taskArgs: any, { ethers, userConfig }) => {
-        // console.log(1);
-        // // console.log(1);
 
         const [ signer ] = await ethers.getSigners();
         
